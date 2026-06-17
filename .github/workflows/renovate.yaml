@@ -4,7 +4,6 @@ on:
   schedule:
     - cron: "0 */4 * * *"
   workflow_dispatch:
-  issues:
 
 jobs:
   renovate:
@@ -34,3 +33,7 @@ jobs:
         with:
           configurationFile: renovate.config.js
           token: ${{ steps.get_token.outputs.token }}
+        env:
+          RENOVATE_CACHE_DIR: /tmp/renovate/cache
+          RENOVATE_GHCR_USERNAME: x-access-token
+          RENOVATE_GHCR_TOKEN: ${{ steps.get_token.outputs.token }}

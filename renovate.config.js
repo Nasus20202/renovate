@@ -4,11 +4,17 @@ module.exports = {
   onboarding: true,
   requireConfig: "required",
   platform: "github",
-  logLevel: "debug",
-  printConfig: true,
   onboardingConfig: {
     extends: ["config:recommended"],
   },
+  hostRules: [
+    {
+      matchHost: 'ghcr.io',
+      hostType: 'docker',
+      username: process.env.RENOVATE_GHCR_USERNAME,
+      password: process.env.RENOVATE_GHCR_TOKEN,
+    },
+  ],
 
   autodiscover: true,
   autodiscoverFilter: ["Nasus20202/*"],
