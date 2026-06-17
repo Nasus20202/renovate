@@ -4,6 +4,18 @@ on:
   schedule:
     - cron: "0 */4 * * *"
   workflow_dispatch:
+    inputs:
+      logLevel:
+        description: "Log level for Renovate"
+        required: false
+        default: "INFO"
+        type: choice
+        options:
+          - DEBUG
+          - INFO
+          - WARN
+          - ERROR
+          - FATAL
 
 jobs:
   renovate:
@@ -38,7 +50,9 @@ jobs:
         with:
           configurationFile: renovate.config.js
           token: ${{ steps.get_token.outputs.token }}
+          renovate-version: 43.227.1 # renovate: datasource=docker depName=ghcr.io/renovatebot/renovate
         env:
           RENOVATE_CACHE_DIR: /tmp/renovate/cache
           RENOVATE_GHCR_USERNAME: x-access-token
           RENOVATE_GHCR_TOKEN: ${{ steps.get_token.outputs.token }}
+          LOG_LEVEL: ${{ github.event.inputs.logLevel || 'INFO' }}
