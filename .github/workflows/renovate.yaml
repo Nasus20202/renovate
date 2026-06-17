@@ -31,7 +31,6 @@ jobs:
           client-id: ${{ secrets.RENOVATE_APP_CLIENT_ID }}
           private-key: ${{ secrets.RENOVATE_APP_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
-          renovate-version: 43.227.1 # renovate: datasource=docker depName=ghcr.io/renovatebot/renovate
 
       - name: Checkout
         uses: actions/checkout@v6
@@ -58,5 +57,5 @@ jobs:
         env:
           RENOVATE_CACHE_DIR: /tmp/renovate/cache
           RENOVATE_GHCR_USERNAME: x-access-token
-          RENOVATE_GHCR_TOKEN: ${{ steps.get_token.outputs.token }}
+          RENOVATE_GHCR_PASSWORD: ${{ secrets.RENOVATE_GHCR_TOKEN }}
           LOG_LEVEL: ${{ github.event.inputs.logLevel || 'INFO' }}
