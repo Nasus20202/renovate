@@ -17,6 +17,9 @@ on:
           - ERROR
           - FATAL
 
+concurrency:
+  group: renovate
+
 jobs:
   renovate:
     runs-on: ubuntu-latest
@@ -28,6 +31,7 @@ jobs:
           client-id: ${{ secrets.RENOVATE_APP_CLIENT_ID }}
           private-key: ${{ secrets.RENOVATE_APP_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
+          renovate-version: 43.227.1 # renovate: datasource=docker depName=ghcr.io/renovatebot/renovate
 
       - name: Checkout
         uses: actions/checkout@v6

@@ -5,7 +5,14 @@ module.exports = {
   requireConfig: "required",
   platform: "github",
   onboardingConfig: {
-    extends: ["config:recommended"],
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": ["config:recommended"],
+    "packageRules": [
+      {
+        "matchUpdateTypes": ["minor", "patch"],
+        "automerge": true
+      }
+    ]
   },
   hostRules: [
     {
