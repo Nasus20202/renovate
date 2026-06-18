@@ -16,8 +16,8 @@ module.exports = {
   },
   hostRules: [
     {
-      matchHost: 'ghcr.io',
-      hostType: 'docker',
+      matchHost: "ghcr.io",
+      hostType: "docker",
       username: process.env.RENOVATE_GHCR_USERNAME,
       password: process.env.RENOVATE_GHCR_PASSWORD,
     },
@@ -29,4 +29,5 @@ module.exports = {
   gitAuthor:
     "Renovate Cat <294440874+renovate-cat[bot]@users.noreply.github.com>",
   username: "renovate-cat[bot]",
+  prFooter: "🐱 Meow. Dependencies updated by Renovate Cat.",
 };
