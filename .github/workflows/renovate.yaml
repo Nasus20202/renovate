@@ -53,7 +53,7 @@ jobs:
         with:
           configurationFile: renovate.config.js
           token: ${{ steps.get_token.outputs.token }}
-          renovate-version: 44.29.3
+          renovate-version: 44.29.4
         env:
           RENOVATE_CACHE_DIR: /tmp/renovate/cache
           RENOVATE_GHCR_USERNAME: x-access-token
