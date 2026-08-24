@@ -49,7 +49,7 @@ jobs:
           sudo chmod -R 777 /tmp/renovate
 
       - name: Self-hosted Renovate
-        uses: renovatebot/github-action@v46.2.2
+        uses: renovatebot/github-action@v46.2.3
         with:
           configurationFile: renovate.config.js
           token: ${{ steps.get_token.outputs.token }}
