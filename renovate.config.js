@@ -26,6 +26,10 @@ module.exports = {
   autodiscover: true,
   autodiscoverFilter: ["Nasus20202/*"],
 
+  // Repos can run postUpgradeTasks. Safe to allow everything because autodiscover
+  // is limited to Nasus20202/* and config is only read from default branches.
+  allowedCommands: [".*"],
+
   gitAuthor:
     "Renovate Cat <294440874+renovate-cat[bot]@users.noreply.github.com>",
   username: "renovate-cat[bot]",
