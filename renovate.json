@@ -1,11 +1,26 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
+  "timezone": "Europe/Warsaw",
+  "schedule": ["* 0-5 * * 1"],
+  "minimumReleaseAge": "3 days",
+  "prHourlyLimit": 1,
+  "prConcurrentLimit": 3,
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
       "ignoreTests": true
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchDepNames": ["ghcr.io/renovatebot/renovate"],
+      "groupName": "renovate runner image",
+      "minimumReleaseAge": "3 days"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions"
     }
   ],
   "customManagers": [
