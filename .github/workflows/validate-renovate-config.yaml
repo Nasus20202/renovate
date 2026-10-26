@@ -18,5 +18,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      - name: Read runner version from renovate workflow
+        id: runner
+        run: |
+          version=$(grep 'renovate-version' .github/workflows/renovate.yaml | cut -d: -f2 | tr -d ' \t')
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
       - name: Validate renovate.json
-        run: npx --yes -p renovate@44.182.2 renovate-config-validator renovate.json
+        run: npx --yes -p renovate@${{ steps.runner.outputs.version }} renovate-config-validator renovate.json
