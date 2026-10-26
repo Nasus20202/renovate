@@ -1,0 +1,22 @@
+name: Validate Renovate config
+
+on:
+  pull_request:
+    paths:
+      - renovate.json
+      - renovate.config.js
+      - .github/workflows/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Validate renovate.json
+        run: npx --yes -p renovate@44.182.2 renovate-config-validator renovate.json
