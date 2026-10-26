@@ -4,7 +4,6 @@
   "timezone": "Europe/Warsaw",
   "schedule": ["* 0-5 * * 1"],
   "minimumReleaseAge": "3 days",
-  "prHourlyLimit": 1,
   "prConcurrentLimit": 3,
   "packageRules": [
     {
