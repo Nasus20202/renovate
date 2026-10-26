@@ -1,0 +1,36 @@
+name: Validate Renovate config
+
+on:
+  pull_request:
+    paths:
+      - renovate.json
+      - renovate.config.js
+      - .github/workflows/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Read runner version from renovate workflow
+        id: runner
+        run: |
+          version=$(grep 'renovate-version' .github/workflows/renovate.yaml | cut -d: -f2 | tr -d ' \t')
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Validate renovate.json
+        run: npx --yes -p renovate@${{ steps.runner.outputs.version }} renovate-config-validator renovate.json
+
+      - name: Validate renovate.config.js
+        # The config reads registry credentials from env. Placeholders are
+        # enough for validation; the real values only exist in the runner.
+        env:
+          RENOVATE_GHCR_USERNAME: placeholder
+          RENOVATE_GHCR_PASSWORD: placeholder
+        run: npx --yes -p renovate@${{ steps.runner.outputs.version }} renovate-config-validator renovate.config.js
