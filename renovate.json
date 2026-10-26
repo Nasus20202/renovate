@@ -8,8 +8,7 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true,
-      "ignoreTests": true
+      "automerge": true
     },
     {
       "matchDatasources": ["docker"],
