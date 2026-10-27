@@ -1,0 +1,16 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "platform": "github",
+  "autodiscover": true,
+  "autodiscoverFilter": ["Nasus20202/*"],
+  "requireConfig": "required",
+  "onboarding": true,
+  "onboardingConfig": {
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": ["config:best-practices"]
+  },
+  "allowedCommands": [".*"],
+  "gitAuthor": "Renovate Cat <294440874+renovate-cat[bot]@users.noreply.github.com>",
+  "username": "renovate-cat[bot]",
+  "prFooter": "🐱 Meow. Dependencies updated by Renovate Cat."
+}

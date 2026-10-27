@@ -51,11 +51,10 @@ jobs:
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v46.3.10
         with:
-          configurationFile: renovate.config.js
+          configurationFile: renovate.config.json
           token: ${{ steps.get_token.outputs.token }}
           renovate-version: 44.182.2
         env:
           RENOVATE_CACHE_DIR: /tmp/renovate/cache
-          RENOVATE_GHCR_USERNAME: x-access-token
-          RENOVATE_GHCR_PASSWORD: ${{ secrets.RENOVATE_GHCR_TOKEN }}
+          RENOVATE_HOST_RULES: '[{"matchHost":"ghcr.io","hostType":"docker","username":"x-access-token","password":"${{ secrets.RENOVATE_GHCR_TOKEN }}"}]'
           LOG_LEVEL: ${{ github.event.inputs.logLevel || 'INFO' }}
