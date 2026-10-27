@@ -4,6 +4,9 @@ module.exports = {
   onboarding: true,
   requireConfig: "required",
   platform: "github",
+  osvVulnerabilityAlerts: true,
+  dependencyDashboardOSVVulnerabilitySummary: "unresolved",
+  configMigration: true,
   onboardingConfig: {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": ["config:recommended"],
