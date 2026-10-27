@@ -8,6 +8,10 @@
     {
       "matchUpdateTypes": ["minor", "patch", "digest"],
       "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["pin", "pinDigest"],
+      "automerge": true
     }
   ]
 }
