@@ -6,11 +6,7 @@
   "dependencyDashboardOSVVulnerabilitySummary": "unresolved",
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "digest"],
-      "automerge": true
-    },
-    {
-      "matchUpdateTypes": ["pin", "pinDigest"],
+      "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
       "automerge": true
     }
   ]
