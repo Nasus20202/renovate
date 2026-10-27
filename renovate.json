@@ -2,12 +2,18 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["github>Nasus20202/renovate"],
   "schedule": ["* 0-5 * * 1"],
+  "minimumReleaseAge": "3 days",
+  "prConcurrentLimit": 3,
   "packageRules": [
     {
       "matchDatasources": ["docker"],
       "matchDepNames": ["ghcr.io/renovatebot/renovate"],
       "groupName": "renovate runner image",
       "minimumReleaseAge": "3 days"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions"
     }
   ],
   "customManagers": [

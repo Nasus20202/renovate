@@ -7,7 +7,7 @@
   "onboarding": true,
   "onboardingConfig": {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:best-practices"]
+    "extends": ["github>Nasus20202/renovate"]
   },
   "allowedCommands": [".*"],
   "gitAuthor": "Renovate Cat <294440874+renovate-cat[bot]@users.noreply.github.com>",
