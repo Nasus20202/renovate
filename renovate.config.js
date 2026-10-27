@@ -1,4 +1,10 @@
 module.exports = {
+  extends: [
+    "helpers:pinGitHubActionDigestsToSemver",
+    ":pinDigests",
+    ":semanticCommits",
+  ],
+
   branchPrefix: "renovate/",
 
   onboarding: true,
