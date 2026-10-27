@@ -18,6 +18,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+
       - name: Read runner version from renovate workflow
         id: runner
         run: |
@@ -35,15 +40,7 @@ jobs:
           RENOVATE_GHCR_PASSWORD: placeholder
         run: npx --yes -p renovate@${{ steps.runner.outputs.version }} renovate-config-validator renovate.config.js
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          # Renovate 44 needs Node 24 (RegExp.escape); the default runner Node is older.
-          node-version: 24
-
       - name: Resolve config presets
-        # The validator above does not resolve `extends` presets, so a missing
-        # preset only fails at runtime. Printing the merged config runs that step.
         env:
           RENOVATE_CONFIG_FILE: renovate.config.js
           RENOVATE_GHCR_USERNAME: placeholder
