@@ -5,7 +5,7 @@ on:
     paths:
       - default.json
       - renovate.json
-      - renovate.config.json
+      - renovate.config.js
       - .github/workflows/**
   workflow_dispatch:
 
@@ -33,11 +33,14 @@ jobs:
       - name: Validate default.json
         run: npx --yes -p renovate@${{ steps.runner.outputs.version }} renovate-config-validator default.json
 
-      - name: Validate renovate.config.json
-        run: npx --yes -p renovate@${{ steps.runner.outputs.version }} renovate-config-validator renovate.config.json
-
       - name: Validate renovate.json
         run: npx --yes -p renovate@${{ steps.runner.outputs.version }} renovate-config-validator renovate.json
+
+      - name: Validate renovate.config.js
+        env:
+          RENOVATE_GHCR_USERNAME: placeholder
+          RENOVATE_GHCR_PASSWORD: placeholder
+        run: npx --yes -p renovate@${{ steps.runner.outputs.version }} renovate-config-validator renovate.config.js
 
       - name: Resolve shared preset
         run: |
