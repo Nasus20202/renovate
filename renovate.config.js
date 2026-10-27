@@ -1,7 +1,7 @@
 module.exports = {
   extends: [
     "helpers:pinGitHubActionDigestsToSemver",
-    ":pinDigests",
+    "docker:pinDigests",
     ":semanticCommits",
   ],
 

@@ -18,6 +18,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+
       - name: Read runner version from renovate workflow
         id: runner
         run: |
@@ -34,3 +39,10 @@ jobs:
           RENOVATE_GHCR_USERNAME: placeholder
           RENOVATE_GHCR_PASSWORD: placeholder
         run: npx --yes -p renovate@${{ steps.runner.outputs.version }} renovate-config-validator renovate.config.js
+
+      - name: Resolve config presets
+        env:
+          RENOVATE_CONFIG_FILE: renovate.config.js
+          RENOVATE_GHCR_USERNAME: placeholder
+          RENOVATE_GHCR_PASSWORD: placeholder
+        run: npx --yes -p renovate@${{ steps.runner.outputs.version }} renovate --platform=local --print-config > /dev/null
