@@ -1,27 +1,12 @@
 module.exports = {
-  extends: [
-    "helpers:pinGitHubActionDigestsToSemver",
-    "docker:pinDigests",
-    ":semanticCommits",
-  ],
-
   branchPrefix: "renovate/",
 
   onboarding: true,
   requireConfig: "required",
   platform: "github",
-  osvVulnerabilityAlerts: true,
-  dependencyDashboardOSVVulnerabilitySummary: "unresolved",
-  configMigration: true,
   onboardingConfig: {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:recommended"],
-    "packageRules": [
-      {
-        "matchUpdateTypes": ["minor", "patch"],
-        "automerge": true
-      }
-    ]
+    "extends": ["github>Nasus20202/renovate"]
   },
   hostRules: [
     {

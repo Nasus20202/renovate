@@ -1,15 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "timezone": "Europe/Warsaw",
+  "extends": ["github>Nasus20202/renovate"],
   "schedule": ["* 0-5 * * 1"],
   "minimumReleaseAge": "3 days",
   "prConcurrentLimit": 3,
   "packageRules": [
-    {
-      "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true
-    },
     {
       "matchDatasources": ["docker"],
       "matchDepNames": ["ghcr.io/renovatebot/renovate"],
@@ -25,9 +20,7 @@
     {
       "customType": "regex",
       "managerFilePatterns": ["/^\\.github\\/workflows\\/.*\\.ya?ml$/"],
-      "matchStrings": [
-        "renovate-version:\\s*(?<currentValue>[^\\s#]+)"
-      ],
+      "matchStrings": ["renovate-version:\\s*(?<currentValue>[^\\s#]+)"],
       "depNameTemplate": "ghcr.io/renovatebot/renovate",
       "datasourceTemplate": "docker"
     }

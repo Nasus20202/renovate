@@ -3,6 +3,7 @@ name: Validate Renovate config
 on:
   pull_request:
     paths:
+      - default.json
       - renovate.json
       - renovate.config.js
       - .github/workflows/**
@@ -29,20 +30,19 @@ jobs:
           version=$(grep 'renovate-version' .github/workflows/renovate.yaml | cut -d: -f2 | tr -d ' \t')
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
+      - name: Validate default.json
+        run: npx --yes -p renovate@${{ steps.runner.outputs.version }} renovate-config-validator default.json
+
       - name: Validate renovate.json
         run: npx --yes -p renovate@${{ steps.runner.outputs.version }} renovate-config-validator renovate.json
 
       - name: Validate renovate.config.js
-        # The config reads registry credentials from env. Placeholders are
-        # enough for validation; the real values only exist in the runner.
         env:
           RENOVATE_GHCR_USERNAME: placeholder
           RENOVATE_GHCR_PASSWORD: placeholder
         run: npx --yes -p renovate@${{ steps.runner.outputs.version }} renovate-config-validator renovate.config.js
 
-      - name: Resolve config presets
-        env:
-          RENOVATE_CONFIG_FILE: renovate.config.js
-          RENOVATE_GHCR_USERNAME: placeholder
-          RENOVATE_GHCR_PASSWORD: placeholder
-        run: npx --yes -p renovate@${{ steps.runner.outputs.version }} renovate --platform=local --print-config > /dev/null
+      - name: Resolve shared preset
+        run: |
+          jq '{extends: .extends}' default.json > "$RUNNER_TEMP/presets.json"
+          RENOVATE_CONFIG_FILE="$RUNNER_TEMP/presets.json" npx --yes -p renovate@${{ steps.runner.outputs.version }} renovate --platform=local --print-config > /dev/null
