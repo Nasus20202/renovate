@@ -1,7 +1,12 @@
 module.exports = {
   // Pin everything to immutable digests: GitHub Actions to commit SHAs (keeping
   // the version as a comment), and Docker/Kubernetes images to sha256 digests.
-  extends: ["helpers:pinGitHubActionDigestsToSemver", ":pinDigests"],
+  // Use Conventional Commit messages for Renovate's commits.
+  extends: [
+    "helpers:pinGitHubActionDigestsToSemver",
+    ":pinDigests",
+    ":semanticCommits",
+  ],
 
   branchPrefix: "renovate/",
 
