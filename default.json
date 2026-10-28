@@ -8,16 +8,6 @@
     "enabled": true,
     "automerge": true
   },
-  "customManagers": [
-    {
-      "customType": "regex",
-      "description": "Track the corepack version pinned in Dockerfile ARG via a renovate annotation",
-      "managerFilePatterns": ["/(^|/)Dockerfile$/"],
-      "matchStrings": [
-        "#\\s*renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)\\s*\\n\\s*ARG\\s+\\w+=(?<currentValue>[^\\s]+)"
-      ]
-    }
-  ],
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
