@@ -4,6 +4,10 @@
   "timezone": "Europe/Warsaw",
   "osvVulnerabilityAlerts": true,
   "dependencyDashboardOSVVulnerabilitySummary": "unresolved",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  },
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
