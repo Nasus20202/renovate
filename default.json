@@ -5,6 +5,12 @@
   "osvVulnerabilityAlerts": true,
   "dependencyDashboardOSVVulnerabilitySummary": "unresolved",
   "minimumReleaseAgeBehaviour": "timestamp-optional",
+  "logLevelRemap": [
+    {
+      "matchMessage": "*minimumReleaseAgeBehaviour=timestamp-optional*",
+      "newLogLevel": "info"
+    }
+  ],
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true
