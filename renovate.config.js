@@ -15,6 +15,12 @@ module.exports = {
       username: process.env.RENOVATE_GHCR_USERNAME,
       password: process.env.RENOVATE_GHCR_PASSWORD,
     },
+    {
+      matchHost: "docker.io",
+      hostType: "docker",
+      username: process.env.RENOVATE_DOCKERHUB_USERNAME,
+      password: process.env.RENOVATE_DOCKERHUB_TOKEN,
+    },
   ],
 
   autodiscover: true,
