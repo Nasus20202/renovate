@@ -21,6 +21,14 @@ module.exports = {
       username: process.env.RENOVATE_DOCKERHUB_USERNAME,
       password: process.env.RENOVATE_DOCKERHUB_TOKEN,
     },
+    {
+      // Tag listings (used for release timestamps) are requested from hub.docker.com,
+      // which the docker.io rule does not match.
+      matchHost: "hub.docker.com",
+      hostType: "docker",
+      username: process.env.RENOVATE_DOCKERHUB_USERNAME,
+      password: process.env.RENOVATE_DOCKERHUB_TOKEN,
+    },
   ],
 
   autodiscover: true,
