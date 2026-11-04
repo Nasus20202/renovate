@@ -4,7 +4,6 @@
   "timezone": "Europe/Warsaw",
   "osvVulnerabilityAlerts": true,
   "dependencyDashboardOSVVulnerabilitySummary": "unresolved",
-  "internalChecksFilter": "strict",
   "minimumReleaseAgeBehaviour": "timestamp-optional",
   "lockFileMaintenance": {
     "enabled": true,
