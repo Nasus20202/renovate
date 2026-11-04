@@ -13,7 +13,7 @@ module.exports = {
       matchHost: "ghcr.io",
       hostType: "docker",
       username: process.env.RENOVATE_GHCR_USERNAME,
-      password: process.env.RENOVATE_GHCR_PASSWORD,
+      password: process.env.RENOVATE_GHCR_TOKEN,
     },
     {
       matchHost: "docker.io",
