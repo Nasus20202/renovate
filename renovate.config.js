@@ -19,7 +19,7 @@ module.exports = {
       matchHost: "docker.io",
       hostType: "docker",
       username: process.env.RENOVATE_DOCKERHUB_USERNAME,
-      password: process.env.RENOVATE_DOCKERHUB_TOKEN,
+      password: process.env.RENOVATE_DOCKERHUB_PASSWORD,
     },
   ],
 
