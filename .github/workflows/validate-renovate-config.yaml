@@ -39,7 +39,9 @@ jobs:
       - name: Validate renovate.config.js
         env:
           RENOVATE_GHCR_USERNAME: placeholder
-          RENOVATE_GHCR_PASSWORD: placeholder
+          RENOVATE_GHCR_TOKEN: placeholder
+          RENOVATE_DOCKERHUB_USERNAME: placeholder
+          RENOVATE_DOCKERHUB_TOKEN: placeholder
         run: npx --yes -p renovate@${{ steps.runner.outputs.version }} renovate-config-validator renovate.config.js
 
       - name: Resolve shared preset

@@ -56,6 +56,8 @@ jobs:
           renovate-version: 44.182.2
         env:
           RENOVATE_CACHE_DIR: /tmp/renovate/cache
-          RENOVATE_GHCR_USERNAME: x-access-token
-          RENOVATE_GHCR_PASSWORD: ${{ secrets.RENOVATE_GHCR_TOKEN }}
+          RENOVATE_GHCR_USERNAME: ${{ vars.RENOVATE_GHCR_USERNAME }}
+          RENOVATE_GHCR_TOKEN: ${{ secrets.RENOVATE_GHCR_TOKEN }}
+          RENOVATE_DOCKERHUB_USERNAME: ${{ vars.RENOVATE_DOCKERHUB_USERNAME }}
+          RENOVATE_DOCKERHUB_TOKEN: ${{ secrets.RENOVATE_DOCKERHUB_TOKEN }}
           LOG_LEVEL: ${{ github.event.inputs.logLevel || 'INFO' }}
