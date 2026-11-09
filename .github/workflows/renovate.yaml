@@ -49,11 +49,11 @@ jobs:
           sudo chmod -R 777 /tmp/renovate
 
       - name: Self-hosted Renovate
-        uses: renovatebot/github-action@v46.3.10
+        uses: renovatebot/github-action@1c0cf989c02653fba0efe7ca5772338860ca71dc # v46.3.12
         with:
           configurationFile: renovate.config.js
           token: ${{ steps.get_token.outputs.token }}
-          renovate-version: 44.182.2
+          renovate-version: 44.222.5
         env:
           RENOVATE_CACHE_DIR: /tmp/renovate/cache
           RENOVATE_GHCR_USERNAME: ${{ vars.RENOVATE_GHCR_USERNAME }}
