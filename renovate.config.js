@@ -14,6 +14,11 @@ module.exports = {
       hostType: "docker",
       username: process.env.RENOVATE_GHCR_USERNAME,
       password: process.env.RENOVATE_GHCR_TOKEN,
+      // Large tag lists (cloudnative-pg/postgresql ~12k tags, immich-machine-learning)
+      // need many paginated requests. Without pacing ghcr.io answers 429 and Renovate
+      // reports "Failed to look up docker package ...: no-result".
+      concurrentRequestLimit: 2,
+      maxRequestsPerSecond: 4,
     },
     {
       matchHost: "docker.io",
